@@ -1,39 +1,43 @@
 let db;
-const request = window.indexedDB.open('The Programmers', 1);
 
-// Manejo de eventos
-request.onerror = (e) => {
-    console.error(`IndexedDB error: ${request.errorCode}`);
-};
+function createIndexDB(productos) {
+    const request = window.indexedDB.open('The Programmers', 1);
 
-request.onsuccess = (e) => {
-    console.info('Conexión exitosa a la base de datos');
-    db = e.target.result;
-};
+    // Manejo de eventos
+    request.onerror = (e) => {
+        console.error(`IndexedDB error: ${request.errorCode}`);
+    };
 
-request.onupgradeneeded = (e) => {
+    request.onsuccess = (e) => {
+        console.info('Conexión exitosa a la base de datos');
+        db = e.target.result;
+        addCursos(productos);
+    };
 
-    console.info('Base de datos creada');
+    request.onupgradeneeded = (e) => {
 
-    const db = e.target.result;
+        console.info('Base de datos creada');
 
-    const objectStore = db.createObjectStore('cursos', {
-        keyPath: "id"
-    })
+        const db = e.target.result;
 
-    // Indexacion
-    objectStore.createIndex('id', 'id', { unique: true });
-    objectStore.createIndex('titulo', 'titulo', { unique: false });
-    objectStore.createIndex('imagen', 'imagen', { unique: false });
-    objectStore.createIndex('categoria', 'categoria', { unique: false });
-    objectStore.createIndex('descripcion', 'descripcion', { unique: false });
-    objectStore.createIndex('precio', 'precio', { unique: false });
+        const objectStore = db.createObjectStore('cursos', {
+            keyPath: "id"
+        })
 
-    // Transaccion completada
-    objectStore.transaction.oncompleted = (e) => {
-        console.log('El objeto "cursos" se a creado');
-    }
-};
+        // Indexacion
+        objectStore.createIndex('id', 'id', { unique: true });
+        objectStore.createIndex('titulo', 'titulo', { unique: false });
+        objectStore.createIndex('imagen', 'imagen', { unique: false });
+        objectStore.createIndex('categoria', 'categoria', { unique: false });
+        objectStore.createIndex('descripcion', 'descripcion', { unique: false });
+        objectStore.createIndex('precio', 'precio', { unique: false });
+
+        // Transaccion completada
+        objectStore.transaction.oncompleted = (e) => {
+            console.log('El objeto "cursos" se a creado');
+        }
+    };
+}
 
 // Agrega los cursos que son pasados por parametros
 function addCursos(cursos) {

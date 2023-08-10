@@ -5,7 +5,7 @@ fetch("./json/productos.json")
     .then(data => {
         productos = data;
         cargarProductos(productos);
-        addCursos(productos);
+        createIndexDB(productos);
     })
     .catch(error => console.error(error));
 
