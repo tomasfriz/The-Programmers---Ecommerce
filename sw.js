@@ -6,11 +6,11 @@ self.addEventListener("install", async e => {
 
     var cache = await caches.open(cacheName);
     cache.addAll([
-        "./index.html",
-        "./css/styles.css",
-        "./json/productos.json",
-        "./js",
-        "./images/logo.webp"
+        "/index.html",
+        "/css/styles.css",
+        "/json/productos.json",
+        "/js/main.js",
+        "/images/logo.webp"
     ]);
 });
 

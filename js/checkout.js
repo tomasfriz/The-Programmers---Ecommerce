@@ -18,7 +18,7 @@ function cargarFormulario() {
     const div = document.createElement("div");
     div.classList.add("formulario");
     div.innerHTML = `
-            <form>
+            <form action="" method="get">
                 <div>
                     <img src="./images/usuario.webp" class="img-fluid mx-auto d-block" alt="imagen ilustrativa del icono de usuario">
                 </div>

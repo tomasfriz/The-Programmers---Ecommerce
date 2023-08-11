@@ -80,23 +80,12 @@ main {
     margin: 0.3rem !important;
 }
 
-.producto-vista {
-    text-align: center;
-    margin: 1rem !important;
-    background-color: var(--clr-gray);
-    color: var(--clr-main);
-    padding: .4rem !important;
-    text-transform: uppercase;
-    border-radius: 2rem;
-    cursor: pointer;
-    border: 3px solid var(--clr-gray) !important;
-    transition: background-color .2s, color .2s;
-}
-
+.producto-vista,
 .producto-agregar {
     text-align: center;
     background-color: var(--clr-gray);
-    margin-top: 1rem !important;
+    display: flex;
+    justify-content: center;
     color: var(--clr-main);
     padding: .4rem !important;
     text-transform: uppercase;

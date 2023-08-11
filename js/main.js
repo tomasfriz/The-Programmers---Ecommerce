@@ -1,6 +1,6 @@
 let productos = [];
 
-fetch("./json/productos.json")
+fetch("/json/productos.json")
     .then(response => response.json())
     .then(data => {
         productos = data;
@@ -25,11 +25,11 @@ function cargarProductos(productosElegidos) {
         div.classList.add("producto");
         div.innerHTML = `
             <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="${producto.imagen}" alt="${producto.titulo}>
+                <img class="card-img-top" src="${producto.imagen}" alt="${producto.titulo}">
                 <div class="card-body">
                     <h2 class="card-title producto-titulo text-primary">${producto.titulo}</h2>
                     <p class="producto-precio text-primary">$${producto.precio}</p>
-                    <a class="producto-vista" href="./vista.html?id=${producto.id}">Ver Más</a>
+                    <a class="producto-vista" href="/vista.html?id=${producto.id}">Ver Más</a>
                 </div>
             </div>
         `;
